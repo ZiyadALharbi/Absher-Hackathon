@@ -5,3 +5,4 @@ Recommended structure:
 - `services/` — one markdown per service with purpose, requirements, conditions, and payment note.
 - `policies/` — any general guidance or eligibility rules.
 
+

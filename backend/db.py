@@ -21,3 +21,4 @@ def get_session() -> Session:
 def init_db() -> None:
     """Create tables on startup."""
     SQLModel.metadata.create_all(engine)
+

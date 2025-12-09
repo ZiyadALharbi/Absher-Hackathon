@@ -33,3 +33,4 @@ def wallet_transactions(user=Depends(get_current_user), session=Depends(get_sess
         for tx in txs
     ]
 
+

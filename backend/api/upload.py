@@ -24,3 +24,4 @@ async def upload_file(user=Depends(get_current_user), file: UploadFile = File(..
     dest.write_bytes(content)
     return {"file_id": fname, "original_name": file.filename}
 
+

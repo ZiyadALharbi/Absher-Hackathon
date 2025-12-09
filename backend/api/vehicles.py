@@ -26,3 +26,4 @@ def list_vehicles_route(user=Depends(get_current_user), session=Depends(get_sess
         for v in vehicles
     ]
 
+

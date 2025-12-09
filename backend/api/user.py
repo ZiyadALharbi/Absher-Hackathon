@@ -17,3 +17,4 @@ def profile(user: User = Depends(get_current_user)):
         "birth_date": user.birth_date,
     }
 
+

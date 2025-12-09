@@ -58,3 +58,4 @@ def accident_objection(accident_number: str, objection_type: str = "objection", 
     session.commit()
     return {"status": "success", "accident_number": accident_number}
 
+

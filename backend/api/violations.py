@@ -65,3 +65,4 @@ def violation_objection(violation_number: str, reason: str | None = None, user=D
     session.commit()
     return {"status": "success", "violation_number": violation_number}
 
+
