@@ -72,8 +72,10 @@ export default function LifeEventBundles() {
 
   return (
     <div className="space-y-6" dir="rtl">
-      <h2 className="text-2xl font-bold text-[#000000]">حزم الأحداث الحياتية</h2>
-      <p className="text-[#4A4A4A]">نسهل عليك إتمام جميع الإجراءات الحكومية في خطوة واحدة</p>
+      <div>
+        <h2 className="text-2xl font-bold text-[#000000] mb-2">رحلات الحياة</h2>
+        <p className="text-[#4A4A4A] text-base">نوحّد جميع خدماتك الحكومية في رحلة واحدة مرتبطة بحدث حياتك</p>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Marriage Bundle */}

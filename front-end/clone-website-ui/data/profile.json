@@ -1,11 +1,11 @@
 {
   "nationalId": "1111",
-  "name": "محمد أحمد العتيبي",
+  "name": "أحمد محمد العتيبي",
   "nationality": "سعودي",
   "birthDate": "1990-05-15",
   "maritalStatus": "أعزب",
   "city": "الرياض",
   "phone": "+966501234567",
-  "email": "mohammed@example.com"
+  "email": "ahmed@example.com"
 }
 

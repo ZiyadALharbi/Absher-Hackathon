@@ -13,11 +13,13 @@ import LanguageDetectionModal from "@/components/LanguageDetectionModal"
 const VoiceCallButton = dynamic(() => import('@/components/VoiceCallButton'), { ssr: false });
 const AounChatButton = dynamic(() => import('@/components/AounChatButton'), { ssr: false });
 const LifeEventBundles = dynamic(() => import('@/components/LifeEventBundles'), { ssr: false });
+const HealthCheckModal = dynamic(() => import('@/components/HealthCheckModal'), { ssr: false });
 
 export default function Home() {
   const router = useRouter();
   const [showLanguageModal, setShowLanguageModal] = useState(false);
   const [userNationality, setUserNationality] = useState<string | null>(null);
+  const [showHealthCheck, setShowHealthCheck] = useState(false);
 
   useEffect(() => {
     // 🎯 CASE 1: Proactive Language Detection Demo
@@ -94,6 +96,31 @@ export default function Home() {
           <SearchBar />
           <MainContent />
           
+          {/* Health Check Button */}
+          <div className="bg-gradient-to-r from-[#00663D] to-[#008850] rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex items-center justify-between">
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-white mb-2">فحص وضعك الحكومي الكامل</h3>
+                <p className="text-white/90 text-base mb-4">
+                  فحص شامل لجميع خدماتك الحكومية وتنبيهات قبل أن تصبح غرامة
+                </p>
+                <button
+                  onClick={() => setShowHealthCheck(true)}
+                  className="bg-white text-[#00663D] px-6 py-3 rounded-lg font-bold text-base hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-md"
+                >
+                  ابدأ الفحص الآن
+                </button>
+              </div>
+              <div className="ml-6">
+                <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center">
+                  <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Life Events Section */}
           <div className="bg-white rounded-lg border border-[#E4E4E7] p-6 shadow-md">
             <LifeEventBundles />
@@ -111,6 +138,14 @@ export default function Home() {
           userNationality={userNationality}
           onLanguageSelect={handleLanguageSelect}
           onSkip={handleSkipLanguage}
+        />
+      )}
+
+      {/* Health Check Modal */}
+      {showHealthCheck && (
+        <HealthCheckModal
+          isOpen={showHealthCheck}
+          onClose={() => setShowHealthCheck(false)}
         />
       )}
     </div>
