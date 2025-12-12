@@ -629,7 +629,7 @@ graph TD
 
 ```bash
 # 1. Clone
-git clone https://github.com/ZiyadALharbi/Absher-Kackathon.git
+git clone https://github.com/ZiyadALharbi/Absher-Hackathon.git
 
 # 2. Install
 cd front-end/clone-website-ui
