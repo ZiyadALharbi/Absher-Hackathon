@@ -1,0 +1,24 @@
+{
+  "nationalId": {
+    "number": "1111",
+    "issueDate": "2020-01-15",
+    "expiryDate": "2025-12-22",
+    "status": "warning",
+    "daysUntilExpiry": 10
+  },
+  "drivingLicense": {
+    "number": "DL789456",
+    "issueDate": "2018-06-20",
+    "expiryDate": "2028-06-20",
+    "status": "valid",
+    "daysUntilExpiry": 1200
+  },
+  "passport": {
+    "number": "P123456",
+    "issueDate": "2019-03-10",
+    "expiryDate": "2029-03-10",
+    "status": "valid",
+    "daysUntilExpiry": 1500
+  }
+}
+

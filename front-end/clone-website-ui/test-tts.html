@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTS Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            direction: rtl;
+            text-align: right;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            background: #00663D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+        }
+        button:hover {
+            background: #004A2C;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>اختبار TTS</h1>
+    
+    <div>
+        <button onclick="testConfig()">1. اختبار الإعدادات</button>
+        <button onclick="testSimpleTTS()">2. اختبار TTS بسيط</button>
+        <button onclick="testFullTTS()">3. اختبار TTS كامل</button>
+        <button onclick="testWithText()">4. اختبار بنص عربي</button>
+    </div>
+
+    <div id="output" class="output"></div>
+
+    <script>
+        const log = (message, type = 'info') => {
+            const output = document.getElementById('output');
+            const timestamp = new Date().toLocaleTimeString('ar-SA');
+            output.className = 'output ' + (type === 'error' ? 'error' : type === 'success' ? 'success' : '');
+            output.textContent += `[${timestamp}] ${message}\n`;
+        };
+
+        const clearLog = () => {
+            document.getElementById('output').textContent = '';
+        };
+
+        async function testConfig() {
+            clearLog();
+            log('جاري اختبار الإعدادات...');
+            
+            try {
+                const response = await fetch('/api/test-tts');
+                const data = await response.json();
+                log(JSON.stringify(data, null, 2), response.ok ? 'success' : 'error');
+            } catch (error) {
+                log('خطأ: ' + error.message, 'error');
+            }
+        }
+
+        async function testSimpleTTS() {
+            clearLog();
+            log('جاري اختبار TTS البسيط...');
+            
+            try {
+                const response = await fetch('/api/tts-simple', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: 'Hello, this is a test.' })
+                });
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    log('فشل: ' + JSON.stringify(error, null, 2), 'error');
+                    return;
+                }
+                
+                const audioBlob = await response.blob();
+                log(`نجح! حجم الملف: ${audioBlob.size} bytes`, 'success');
+                
+                // Play audio
+                const audio = new Audio(URL.createObjectURL(audioBlob));
+                audio.play();
+                log('تشغيل الصوت...', 'success');
+            } catch (error) {
+                log('خطأ: ' + error.message, 'error');
+            }
+        }
+
+        async function testFullTTS() {
+            clearLog();
+            log('جاري اختبار TTS الكامل...');
+            
+            try {
+                const response = await fetch('/api/tts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: 'مرحبا' })
+                });
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    log('فشل: ' + JSON.stringify(error, null, 2), 'error');
+                    return;
+                }
+                
+                const audioBlob = await response.blob();
+                log(`نجح! حجم الملف: ${audioBlob.size} bytes`, 'success');
+                
+                // Play audio
+                const audio = new Audio(URL.createObjectURL(audioBlob));
+                audio.play();
+                log('تشغيل الصوت...', 'success');
+            } catch (error) {
+                log('خطأ: ' + error.message, 'error');
+            }
+        }
+
+        async function testWithText() {
+            clearLog();
+            const text = 'مرحباً، أنا عون، مساعدك الذكي للخدمات الحكومية';
+            log('جاري اختبار بنص عربي: ' + text);
+            
+            try {
+                const response = await fetch('/api/tts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text })
+                });
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    log('فشل: ' + JSON.stringify(error, null, 2), 'error');
+                    return;
+                }
+                
+                const audioBlob = await response.blob();
+                log(`نجح! حجم الملف: ${audioBlob.size} bytes`, 'success');
+                
+                // Play audio
+                const audio = new Audio(URL.createObjectURL(audioBlob));
+                audio.play();
+                log('تشغيل الصوت...', 'success');
+            } catch (error) {
+                log('خطأ: ' + error.message, 'error');
+            }
+        }
+
+        // Auto-test on load
+        window.addEventListener('load', () => {
+            log('صفحة الاختبار جاهزة. اختر اختباراً للبدء.');
+        });
+    </script>
+</body>
+</html>
+

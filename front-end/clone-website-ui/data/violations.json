@@ -1,0 +1,27 @@
+[
+  {
+    "id": "V12345",
+    "amount": 300,
+    "date": "2024-01-12",
+    "description": "تجاوز السرعة",
+    "location": "طريق الملك فهد",
+    "status": "pending"
+  },
+  {
+    "id": "V12346",
+    "amount": 500,
+    "date": "2024-02-05",
+    "description": "عدم ربط حزام الأمان",
+    "location": "طريق الأمير سلطان",
+    "status": "pending"
+  },
+  {
+    "id": "V12347",
+    "amount": 150,
+    "date": "2024-03-10",
+    "description": "استخدام الهاتف أثناء القيادة",
+    "location": "شارع العليا",
+    "status": "pending"
+  }
+]
+

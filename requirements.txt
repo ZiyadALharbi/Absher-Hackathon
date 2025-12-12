@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+passlib
+pydantic
+langchain-groq
+langgraph
+python-multipart
+

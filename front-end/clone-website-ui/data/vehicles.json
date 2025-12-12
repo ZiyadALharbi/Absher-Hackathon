@@ -1,0 +1,39 @@
+[
+  {
+    "plateNumber": "أ ب ج 1234",
+    "make": "تويوتا",
+    "model": "كامري",
+    "year": 2022,
+    "color": "أبيض",
+    "insurance": {
+      "status": "critical",
+      "expiryDate": "2024-12-10",
+      "daysUntilExpiry": -2,
+      "provider": "شركة التأمين الوطنية"
+    },
+    "registration": {
+      "status": "valid",
+      "expiryDate": "2025-08-15",
+      "daysUntilExpiry": 250
+    }
+  },
+  {
+    "plateNumber": "د ه و 5678",
+    "make": "هوندا",
+    "model": "أكورد",
+    "year": 2020,
+    "color": "أسود",
+    "insurance": {
+      "status": "valid",
+      "expiryDate": "2025-06-20",
+      "daysUntilExpiry": 190,
+      "provider": "شركة الراجحي للتأمين"
+    },
+    "registration": {
+      "status": "valid",
+      "expiryDate": "2025-09-10",
+      "daysUntilExpiry": 270
+    }
+  }
+]
+

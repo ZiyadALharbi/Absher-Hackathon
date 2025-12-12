@@ -11,7 +11,7 @@ def get_llm():
     )
 
 
-from langchain_ollama import ChatOllama # do we need to install this? how ? 
+# from langchain_ollama import ChatOllama # do we need to install this? how ? 
 
 
 # def get_llm():

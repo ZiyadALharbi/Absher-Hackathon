@@ -1,4 +1,5 @@
-import { ChevronLeft, BarChart3, Bell, Book, Users, Home } from "lucide-react"
+import { ChevronLeft, BarChart3, Bell, Book, Users, UserCog } from "lucide-react"
+import Image from "next/image"
 
 export default function Header() {
   const navItems = [
@@ -6,44 +7,49 @@ export default function Header() {
     { icon: BarChart3, label: "English", href: "#" },
     { icon: Book, label: "دليل الخدمات", href: "#" },
     { icon: Bell, label: "الاشعارات", href: "#" },
-    { icon: Home, label: "تعديل معلومات المستخدم", href: "#" },
+    { icon: UserCog, label: "تعديل معلومات المستخدم", href: "#" },
     { icon: Users, label: "لوحة المعلومات", href: "#" },
   ]
 
   return (
-    <header className="bg-white border-b border-gray-200">
+    <header className="bg-white border-b border-[#E4E4E7]">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Left Logo */}
-        <div className="flex-shrink-0">
-          <div className="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center">
-            <span className="text-white text-2xl font-bold">🌿</span>
-          </div>
+        {/* Left: Absher Logo */}
+        <div className="shrink-0">
+          <Image
+            src="/absher-logo.svg"
+            alt="أبشر"
+            width={120}
+            height={60}
+            className="h-12 w-auto"
+            priority
+          />
         </div>
 
         {/* Center Navigation */}
-        <nav className="flex-1 flex items-center justify-center gap-4 mx-8">
+        <nav className="flex-1 flex items-center justify-center gap-2 mx-8">
           {navItems.map((item, index) => (
-            <div
+            <a
               key={index}
-              className="flex flex-col items-center gap-1 px-4 py-2 border-r border-gray-200 last:border-r-0"
+              href={item.href}
+              className="flex flex-col items-center gap-2 px-5 py-3 hover:bg-gradient-to-br hover:from-[#F0F9F5] hover:to-white rounded-xl transition-all duration-500 border-r-2 border-[#E4E4E7] last:border-r-0 group hover:scale-110 hover:shadow-lg hover:shadow-[#00663D]/10"
             >
-              <item.icon className="w-6 h-6 text-teal-500" />
-              <span className="text-xs text-gray-700 text-center font-medium">{item.label}</span>
-            </div>
+              <item.icon className="w-6 h-6 text-[#00663D] transition-all duration-300 group-hover:scale-125 group-hover:-rotate-12" strokeWidth={2} />
+              <span className="text-sm text-[#4A4A4A] group-hover:text-[#00663D] text-center font-bold whitespace-nowrap transition-colors duration-300">{item.label}</span>
+            </a>
           ))}
         </nav>
 
-        {/* Right Section */}
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gray-200 rounded-full"></div>
-          </div>
-          <div className="flex flex-col items-end">
-            <div className="text-xs text-gray-500">VISION</div>
-            <div className="text-2xl font-bold text-gray-800">2030</div>
-            <div className="text-xs text-gray-600">المملكة العربية السعودية</div>
-          </div>
-          <div className="w-8 h-8 bg-green-600 rounded-full"></div>
+        {/* Right: MOI + 2030 Vision Logos */}
+        <div className="flex items-center gap-4 shrink-0">
+          <Image
+            src="/moi-2030-logos.png"
+            alt="وزارة الداخلية - رؤية 2030"
+            width={200}
+            height={60}
+            className="h-12 w-auto"
+            priority
+          />
         </div>
       </div>
     </header>
