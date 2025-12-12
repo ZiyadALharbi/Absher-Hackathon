@@ -716,7 +716,7 @@ http://localhost:3000
 
 ## 📞 Contact
 
-**GitHub:** https://github.com/ZiyadALharbi/Absher-Kackathon
+**GitHub:** https://github.com/ZiyadALharbi/Absher-Hackathon
 
 ---
 
